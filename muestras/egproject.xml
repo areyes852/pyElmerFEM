@@ -1,0 +1,333 @@
+<!DOCTYPE egproject>
+<contents>
+   <geometryinputfile>Mensula.msh</geometryinputfile>
+   <operations/>
+   <generalsetup>
+      <widget type="CheckBox">
+         <objectName>checkKeywordsWarn</objectName>
+         <isChecked>1</isChecked>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>meshDBEdit1</objectName>
+         <text>.</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>meshDBEdit2</objectName>
+         <text>.</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>includePathEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>resultsDirectoryEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>steadyStateMaxIterEdit</objectName>
+         <text>1</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>coordinateMappingEdit</objectName>
+         <text>1 2 3</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>timeStepIntervalsEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>outputIntervalsEdit</objectName>
+         <text>1</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>timestepSizesEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>coordinateScalingEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>angularFrequencyEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>solverInputFileEdit</objectName>
+         <text>case.sif</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>postFileEdit</objectName>
+         <text>case.vtu</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>gravityEdit</objectName>
+         <text>0 -1 0 9.82</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>boltzmannEdit</objectName>
+         <text>1.3807e-23</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>stefanBoltzmannEdit</objectName>
+         <text>5.67e-08</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>unitChargeEdit</objectName>
+         <text>1.602e-19</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>vacuumPermittivityEdit</objectName>
+         <text>8.8542e-12</text>
+      </widget>
+      <widget type="TextEdit">
+         <objectName>headerFreeTextEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="TextEdit">
+         <objectName>simulationFreeTextEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="TextEdit">
+         <objectName>constantsFreeTextEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="ComboBox">
+         <objectName>maxOutputLevelCombo</objectName>
+         <currentIndex>4</currentIndex>
+      </widget>
+      <widget type="ComboBox">
+         <objectName>coordinateSystemCombo</objectName>
+         <currentIndex>0</currentIndex>
+      </widget>
+      <widget type="ComboBox">
+         <objectName>timesteppingMethodCombo</objectName>
+         <currentIndex>0</currentIndex>
+      </widget>
+      <widget type="ComboBox">
+         <objectName>bdfOrderCombo</objectName>
+         <currentIndex>0</currentIndex>
+      </widget>
+      <widget type="ComboBox">
+         <objectName>simulationTypeCombo</objectName>
+         <currentIndex>0</currentIndex>
+      </widget>
+   </generalsetup>
+   <parallelsettings>
+      <widget type="CheckBox">
+         <objectName>parallelActiveCheckBox</objectName>
+         <isChecked>0</isChecked>
+      </widget>
+      <widget type="CheckBox">
+         <objectName>skipPartitioningCheckBox</objectName>
+         <isChecked>0</isChecked>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>qt_spinbox_lineedit</objectName>
+         <text>2</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>parallelExecLineEdit</objectName>
+         <text>mpirun</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>parallelArgsLineEdit</objectName>
+         <text>-np %n ElmerSolver_mpi</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>divideLineEdit</objectName>
+         <text>ElmerGrid 2 2 %msh -metis %n</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>mergeLineEdit</objectName>
+         <text>ElmerGrid 15 3 %ep -partjoin %n</text>
+      </widget>
+   </parallelsettings>
+   <meshparameters>
+      <widget type="RadioButton">
+         <objectName>tetlibRadioButton</objectName>
+         <isChecked>0</isChecked>
+      </widget>
+      <widget type="RadioButton">
+         <objectName>nglibRadioButton</objectName>
+         <isChecked>0</isChecked>
+      </widget>
+      <widget type="RadioButton">
+         <objectName>elmerGridRadioButton</objectName>
+         <isChecked>1</isChecked>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>tetlibStringEdit</objectName>
+         <text>nnJApq1.414V</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>nglibMaxHEdit</objectName>
+         <text>1000000</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>nglibFinenessEdit</objectName>
+         <text>0.1</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>nglibBgmeshEdit</objectName>
+         <text></text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>elmerGridStringEdit</objectName>
+         <text>-relh 0.1</text>
+      </widget>
+      <widget type="LineEdit">
+         <objectName>elementCodesStringEdit</objectName>
+         <text></text>
+      </widget>
+   </meshparameters>
+   <solverparameters/>
+   <equation/>
+   <material/>
+   <bodyforce/>
+   <initialcondition/>
+   <boundarycondition/>
+   <solverspecificoptions/>
+   <bodyproperties/>
+   <boundaryproperties>
+      <item index="0">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="1">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="2">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="3">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="4">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="5">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="6">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="7">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="8">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="9">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="10">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="11">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="12">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+      <item index="13">
+         <widget type="CheckBox">
+            <objectName>boundaryAsABody</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>boundaryConditionCombo</objectName>
+            <currentIndex>-1</currentIndex>
+         </widget>
+      </item>
+   </boundaryproperties>
+</contents>

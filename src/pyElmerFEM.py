@@ -1,6 +1,28 @@
 # -*- coding: utf-8 -*-
 
 import vtk
+import struct
+
+
+def leer_elements():
+    # Código
+    print()
+
+
+def leer_boundary():
+    # Código
+    print()
+
+
+def leer_header():
+    # Código
+    print()
+
+
+def leer_nodes():
+    # Código
+    print()
+
 
 def abrir_vtu(archivo):
     reader = vtk.vtkXMLUnstructuredGridReader()
@@ -30,22 +52,6 @@ def lista_vtu_props(output):
     return props
 
 
-def bin_offset_prop(output,propiedades):
-    offset_anterior = 0
-    offsets = [0]
-    for propiedade in propiedades:
-        tamaño = output.GetArray(propiedade).GetSize()
-        tipo = output.GetArray(propiedade).GetDataType()
-        ncomp = output.GetArray(propiedade).GetNumberOfComponents()
-        print(tamaño)
-        if tipo == 11:
-            offset = offset_anterior +tamaño*8 + 4 # Hai catro bits que sobran entre cada propiedade
-            offset_anterior = offset
-            offsets.append(offset)
-        else:
-            offset = 0
-    return offsets
-
 def obter_raw_vtu(archivo):
     # NON SEI SE ESTO FUNCONA SEMPRE!
     # O ficheiro vtu ten unha cabeceira en xml e a continuación un bloque en binario
@@ -66,25 +72,40 @@ def obter_raw_vtu(archivo):
     return raw
 
 
-def leer_elements():
-    # Código
-    print()
+def bin_offset_prop(output,propiedades):
+    offset_anterior = 0
+    offsets = [0]
+    for propiedade in propiedades:
+        tamaño = output.GetArray(propiedade).GetSize() # Tamaño xa ten en conta o número de compoñentes que hai en cada propiedade
+        tipo = output.GetArray(propiedade).GetDataType()
+        # ncomp = output.GetArray(propiedade).GetNumberOfComponents()
+        if tipo == 11:
+            offset = offset_anterior +tamaño*8 + 4 # Hai catro bits que sobran entre cada propiedade
+            offset_anterior = offset
+            offsets.append(offset)
+        else:
+            offset = 0
+    return offsets
 
-def leer_boundary():
-    # Código
-    print()
 
-def leer_header():
-    # Código
-    print()
+def obter_valores(raw,offsets):
+    n = 2#len(offsets)
+    for i in range(n-1):
+        print('OFFSET: ' + str(offsets[i]))
+        offset = offsets[i]+4+1 # Nin idea de onde sae ese +1
+        fin = offsets[i+1]
+        i=[]
+        while offset < fin:
+            i.append(struct.unpack_from("<dd",raw,offset=offset))
+            offset = offset + 8
+        print(i)
 
-def leer_nodes():
-    # Código
-    print()
 
 if __name__ == "__main__":
     archivo = "../muestras/case0001.vtu"
     obter_raw_vtu(archivo)
     output = abrir_vtu(archivo)
     lista_props = lista_vtu_props(output)
-    print(bin_offset_prop(output,lista_props))
+    offsets = bin_offset_prop(output,lista_props)
+    raw = obter_raw_vtu(archivo)
+    obter_valores(raw,offsets)

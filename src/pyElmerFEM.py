@@ -88,17 +88,33 @@ def bin_offset_prop(output,propiedades):
     return offsets
 
 
-def obter_valores(raw,offsets):
-    n = 2#len(offsets)
+def obter_valores(raw,offsets,ncomp):
+    n = len(offsets)
+    vals = []
     for i in range(n-1):
-        print('OFFSET: ' + str(offsets[i]))
+        nc = ncomp[i]
         offset = offsets[i]+4+1 # Nin idea de onde sae ese +1
         fin = offsets[i+1]
-        i=[]
+        dat_raw=[]
         while offset < fin:
-            i.append(struct.unpack_from("<dd",raw,offset=offset))
+            a=struct.unpack_from("<dd",raw,offset=offset) # 2 valores por lectura
+            dat_raw.append(a[0])
+            dat_raw.append(a[1])
             offset = offset + 8
-        print(i)
+        dat_raw.pop() # Hai un último dato que non sei que é, pero non é un valor válido
+        dat_subdiv=[]
+        if nc > 1:
+            for j in range(0,len(dat_raw),nc):
+                dat_subdiv.append(dat_raw[j:j+nc])
+        else:
+            dat_subdiv=dat_raw
+        vals.append(dat_subdiv)
+    return vals
+
+def obter_ncomp(output,propiedades):
+    ncomps = []
+    for i in range(len(propiedades)): ncomps.append(output.GetArray(propiedades[i]).GetNumberOfComponents())
+    return ncomps
 
 
 if __name__ == "__main__":
@@ -108,4 +124,5 @@ if __name__ == "__main__":
     lista_props = lista_vtu_props(output)
     offsets = bin_offset_prop(output,lista_props)
     raw = obter_raw_vtu(archivo)
-    obter_valores(raw,offsets)
+    ncomp = obter_ncomp(output,lista_props)
+    print(obter_valores(raw,offsets,ncomp))
